@@ -4,7 +4,11 @@
   },
   "imports": {
     "@actions/cache": "npm:@actions/cache@^4.0.3",
-    "@std/expect": "jsr:@std/expect@^1.0.15"
+    "@actions/core": "npm:@actions/core@^1.11.1",
+    "@actions/github": "npm:@actions/github@^6.0.0",
+    "@std/cli": "jsr:@std/cli@^1.0.17",
+    "@std/expect": "jsr:@std/expect@^1.0.15",
+    "@std/path": "jsr:@std/path@^1.0.9"
   },
   "fmt": {
     "useTabs": false,
