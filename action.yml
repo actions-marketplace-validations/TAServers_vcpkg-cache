@@ -1,0 +1,11 @@
+name: "vcpkg-cache"
+description: ""
+inputs:
+  action:
+    description: "Action to perform ('read' or 'write')"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.action }}

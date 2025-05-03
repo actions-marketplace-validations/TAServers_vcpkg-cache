@@ -1,0 +1,7 @@
+.idea
+tests
+.editorconfig
+.gitattributes
+.gitignore
+action.yml
+Dockerfile

@@ -3,6 +3,7 @@
     "dev": "deno run --watch src/main.ts"
   },
   "imports": {
+    "@actions/cache": "npm:@actions/cache@^4.0.3",
     "@std/expect": "jsr:@std/expect@^1.0.15"
   },
   "fmt": {
