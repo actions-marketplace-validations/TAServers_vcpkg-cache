@@ -1,6 +1,7 @@
 FROM ubuntu:noble AS apt-downloader
 RUN cd /tmp && \
     apt-get update && apt-get download \
+        libacl1 \
         tar && \
     mkdir /dpkg && \
     for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
