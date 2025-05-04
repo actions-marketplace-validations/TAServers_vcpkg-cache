@@ -14,6 +14,12 @@ The valid change types are:
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [1.0.2] - [No PR](#)
+
+### Added
+
+- Added tag protection rules (dummy release to check permissions)
+
 ## [1.0.1] - [No PR](#)
 
 ### Fixed
