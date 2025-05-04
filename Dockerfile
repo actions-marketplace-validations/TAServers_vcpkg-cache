@@ -11,4 +11,4 @@ RUN --mount=type=cache,target=/var/cache/apk apk add tar
 
 COPY --from=builder /app .
 
-ENTRYPOINT ["deno", "run", "--allow-all", "/app/src/main.ts"]
+ENTRYPOINT ["./restore.sh"]
