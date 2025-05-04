@@ -3,7 +3,7 @@ RUN cd /tmp && \
     apt-get update && apt-get download \
         tar && \
     mkdir /dpkg && \
-    for deb in *.deb; do dpkg --extract $deb /dpkg
+    for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
 
 FROM denoland/deno:alpine-2.3.1 AS builder
 WORKDIR /app
