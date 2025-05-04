@@ -7,6 +7,9 @@ inputs:
   action:
     description: "Action to perform ('restore' or 'save')"
     required: true
+  archive-path:
+    description: "Path to the vcpkg archives relative to $GITHUB_WORKSPACE"
+    required: true
 runs:
   using: "docker"
   image: "Dockerfile"

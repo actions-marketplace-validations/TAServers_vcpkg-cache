@@ -6,7 +6,7 @@ import { CACHE_KEY_PREFIX, getCacheKey, getCacheRestorePath } from "./helpers.ts
 
 const token = core.getInput("token");
 const action = core.getInput("action");
-const vcpkgArchivePath = "/github/workspace/.cache/vcpkg/archives";
+const vcpkgArchivePath = path.join("/github/workspace", core.getInput("archive-path"));
 
 if (action == "restore") {
   await core.group("Restoring vcpkg cache", async () => {
