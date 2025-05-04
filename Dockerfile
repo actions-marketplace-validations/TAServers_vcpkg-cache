@@ -8,4 +8,4 @@ FROM denoland/deno:distroless-2.3.1
 WORKDIR /app
 
 COPY --from=builder /app .
-ENTRYPOINT ["deno", "run", "--allow-env", "--allow-read", "--allow-write", "/app/src/main.ts"]
+ENTRYPOINT ["deno", "run", "--allow-env", "--allow-read", "--allow-write", "--allow-net", "/app/src/main.ts"]
