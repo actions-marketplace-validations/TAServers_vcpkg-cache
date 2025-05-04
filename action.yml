@@ -15,7 +15,7 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "docker://ghcr.io/taservers/vcpkg-cache:master"
+  image: "docker://ghcr.io/taservers/vcpkg-cache:1.0.1"
   entrypoint: "/restore.sh"
   post-entrypoint: "/save.sh"
   env:

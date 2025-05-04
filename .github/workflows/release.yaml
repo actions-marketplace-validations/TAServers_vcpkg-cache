@@ -36,6 +36,7 @@ jobs:
           tag_name: "v${{ steps.changelog.outputs.version }}"
           name: "v${{ steps.changelog.outputs.version }}"
           body: ${{ steps.changelog.outputs.changes }}
+          make_latest: true
 
       - name: Push major version release
         uses: softprops/action-gh-release@v2
@@ -43,3 +44,4 @@ jobs:
           tag_name: "v${{ steps.major-version.outputs.result }}"
           name: "v${{ steps.major-version.outputs.result }}"
           body: ${{ steps.changelog.outputs.changes }}
+          make_latest: false
