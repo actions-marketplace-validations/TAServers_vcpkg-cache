@@ -2,6 +2,11 @@ FROM ubuntu:noble AS apt-downloader
 RUN cd /tmp && \
     apt-get update && apt-get download \
         libacl1 \
+        libc6 \
+        libselinux1 \
+        libgcc-s1 \
+        gcc-14-base \
+        libpcre2-8-0 \
         tar && \
     mkdir /dpkg && \
     for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
