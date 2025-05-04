@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse CHANGELOG.md
+        uses: mindsers/changelog-reader-action@v2
+        id: changelog
+        with:
+          validation_level: warn
+
+      - name: Push release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "v${{ steps.changelog.outputs.version }}"
+          name: "vcpkg-cache - v${{ steps.changelog.outputs.version }}"
+          body: ${{ steps.changelog.outputs.changes }}
