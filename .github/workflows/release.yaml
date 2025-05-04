@@ -55,9 +55,9 @@ jobs:
             const version = "${{ steps.changelog.outputs.version }}";
             const majorVersion = version.split(".")[0];
             const ref = `refs/tags/v${majorVersion}`;
-            github.rest.git.createRef({
+            github.rest.git.updateRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref,
               sha: context.sha
-            })
+            });
