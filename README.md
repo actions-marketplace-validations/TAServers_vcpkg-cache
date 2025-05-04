@@ -41,5 +41,5 @@ Tell `vcpkg` to write binary caches to your chosen directory in `GITHUB_WORKSPAC
 ```
 
 > [!NOTE]
-> The cache path is relative to `GITHUB_WORKSPACE` as this action is implemented as a Docker container action.
-> GitHub mounts `GITHUB_WORKSPACE` to `/github/workspace` in the container.
+> The cache path is relative to `GITHUB_WORKSPACE` as this action is implemented as a Docker container.
+> GitHub mounts `GITHUB_WORKSPACE` to `/github/workspace` in the container when run.
