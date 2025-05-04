@@ -36,7 +36,7 @@ jobs:
           tag_name: "v${{ steps.changelog.outputs.version }}"
           name: "v${{ steps.changelog.outputs.version }}"
           body: ${{ steps.changelog.outputs.changes }}
-          make_latest: true
+          make_latest: false
 
       - name: Push major version release
         uses: softprops/action-gh-release@v2
@@ -45,7 +45,7 @@ jobs:
           tag_name: "v${{ steps.major-version.outputs.result }}"
           name: "v${{ steps.major-version.outputs.result }}"
           body: ${{ steps.changelog.outputs.changes }}
-          make_latest: false
+          make_latest: true
 
       # softprops/action-gh-release won't update the release tag if a release was already created
       - name: Bump major tag
