@@ -1,3 +1,3 @@
 #!/bin/sh
 
-deno run --allow-all src/main.ts save
+deno run --allow-all /app/src/main.ts save

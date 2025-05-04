@@ -10,5 +10,7 @@ WORKDIR /app
 RUN --mount=type=cache,target=/var/cache/apk apk add tar
 
 COPY --from=builder /app .
+COPY restore.sh /
+COPY save.sh /
 
-ENTRYPOINT ["./restore.sh"]
+ENTRYPOINT ["/restore.sh"]
