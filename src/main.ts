@@ -1,7 +1,7 @@
 import cache from "@actions/cache";
 import core from "@actions/core";
 import * as path from "@std/path";
-import { getCacheKey, getCacheRestorePath, getExistingCacheEntries } from "./helpers.ts";
+import {CACHE_KEY_PREFIX, getCacheKey, getCacheRestorePath, getExistingCacheEntries} from "./helpers.ts";
 
 const token = core.getInput("token");
 const action = core.getInput("action");
@@ -10,6 +10,11 @@ const vcpkgArchivePath = path.join("/github/workspace", core.getInput("archive-p
 if (action == "restore") {
   await core.group("Restoring vcpkg cache", async () => {
     const actionsCaches = await getExistingCacheEntries(token!);
+
+    if (actionsCaches.length < 1) {
+        core.info(`No cache entries found with prefix '${CACHE_KEY_PREFIX}'`);
+        return;
+    }
 
     await Promise.all(actionsCaches.map(async (cacheKey) => {
       const archivePath = getCacheRestorePath(vcpkgArchivePath, cacheKey);

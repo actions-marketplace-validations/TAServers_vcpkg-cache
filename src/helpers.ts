@@ -1,7 +1,7 @@
 import * as path from "@std/path";
 import github from "@actions/github";
 
-const CACHE_KEY_PREFIX = "vcpkg-";
+export const CACHE_KEY_PREFIX = "vcpkg-";
 
 export const getCacheRestorePath = (vcpkgArchivePath: string, cacheKey: string): string => {
   const abiHash = cacheKey.slice(CACHE_KEY_PREFIX.length);
