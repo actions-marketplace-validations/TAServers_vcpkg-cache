@@ -42,7 +42,7 @@ if (action == "restore") {
         const archivePath = path.join(vcpkgArchivePath, directory.name, file.name);
         core.info(`Saving '${archivePath}' to '${cacheKey}'`);
 
-        await cache.saveCache([], getCacheKey(file.name));
+        await cache.saveCache([archivePath], getCacheKey(file.name));
       }
     }
   });
