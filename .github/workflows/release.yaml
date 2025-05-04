@@ -21,23 +21,25 @@ jobs:
         with:
           validation_level: warn
 
+      - name: Determine major version
+        uses: actions/github-script@v5
+        id: major-version
+        with:
+          script: |
+            const version = "${{ steps.changelog.outputs.version }}";
+            return version.split(".")[0];
+          result-encoding: "string"
+
       - name: Push granular release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: "v${{ steps.changelog.outputs.version }}"
           name: "v${{ steps.changelog.outputs.version }}"
           body: ${{ steps.changelog.outputs.changes }}
 
-      - name: Create major tag
-        uses: actions/github-script@v5
+      - name: Push major version release
+        uses: softprops/action-gh-release@v2
         with:
-          script: |
-            const version = "${{ steps.changelog.outputs.version }}";
-            const majorVersion = version.split(".")[0];
-            const ref = `refs/tags/v${majorVersion}`;
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref,
-              sha: context.sha
-            })
+          tag_name: "v${{ steps.major-version.outputs.result }}"
+          name: "v${{ steps.major-version.outputs.result }}"
+          body: ${{ steps.changelog.outputs.changes }}
