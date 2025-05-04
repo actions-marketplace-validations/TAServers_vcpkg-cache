@@ -14,6 +14,12 @@ The valid change types are:
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [1.0.1] - [No PR](#)
+
+### Fixed
+
+- Fixed release workflow not triggering build and push of image
+
 ## [1.0.0] - [#1](https://github.com/TAServers/vcpkg-cache/pull/1)
 
 ### Added

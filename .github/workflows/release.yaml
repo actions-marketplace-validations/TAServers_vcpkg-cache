@@ -21,9 +21,23 @@ jobs:
         with:
           validation_level: warn
 
-      - name: Push release
+      - name: Push granular release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "v${{ steps.changelog.outputs.version }}"
-          name: "vcpkg-cache - v${{ steps.changelog.outputs.version }}"
+          name: "v${{ steps.changelog.outputs.version }}"
           body: ${{ steps.changelog.outputs.changes }}
+
+      - name: Create major tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const version = "${{ steps.changelog.outputs.version }}";
+            const majorVersion = version.split(".")[0];
+            const ref = `refs/tags/v${majorVersion}`;
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              sha: context.sha
+            })
