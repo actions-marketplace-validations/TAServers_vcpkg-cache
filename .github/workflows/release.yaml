@@ -40,8 +40,24 @@ jobs:
 
       - name: Push major version release
         uses: softprops/action-gh-release@v2
+        id: major-release
         with:
           tag_name: "v${{ steps.major-version.outputs.result }}"
           name: "v${{ steps.major-version.outputs.result }}"
           body: ${{ steps.changelog.outputs.changes }}
           make_latest: false
+
+      # softprops/action-gh-release won't update the release tag if a release was already created
+      - name: Bump major tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const version = "${{ steps.changelog.outputs.version }}";
+            const majorVersion = version.split(".")[0];
+            const ref = `refs/tags/v${majorVersion}`;
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              sha: context.sha
+            })
