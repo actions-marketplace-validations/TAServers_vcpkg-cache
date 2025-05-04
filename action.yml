@@ -1,5 +1,8 @@
 name: "vcpkg-cache"
-description: ""
+description: "Caches filesystem vcpkg archives using actions/cache"
+branding:
+  icon: "archive"
+  color: "yellow"
 inputs:
   token:
     description: "GitHub workflow token"
@@ -12,7 +15,7 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "ghcr.io/taservers/vcpkg-cache"
   env:
     INPUT_TOKEN: ${{ inputs.token }}
     INPUT_ACTION: ${{ inputs.action }}
