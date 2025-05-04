@@ -21,13 +21,13 @@ if (action == "restore") {
       },
     );
 
-    for (const cacheEntry of actionsCaches) {
+    await Promise.all(actionsCaches.map(async (cacheEntry) => {
       const cacheKey = cacheEntry.key!;
       const archivePath = getCacheRestorePath(vcpkgArchivePath, cacheEntry.key!);
       core.info(`Restoring '${cacheKey}' to '${archivePath}'`);
 
       await cache.restoreCache([archivePath], cacheEntry.key!);
-    }
+    }));
   });
 } else if (action == "save") {
   await core.group("Saving vcpkg cache", async () => {
