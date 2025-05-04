@@ -15,7 +15,7 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "ghcr.io/taservers/vcpkg-cache"
+  image: "docker://ghcr.io/taservers/vcpkg-cache:master"
   env:
     INPUT_TOKEN: ${{ inputs.token }}
     INPUT_ACTION: ${{ inputs.action }}
