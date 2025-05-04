@@ -2,10 +2,9 @@ import cache from "@actions/cache";
 import core from "@actions/core";
 import * as path from "@std/path";
 import { CACHE_KEY_PREFIX, getCacheKey, getCacheRestorePath, getExistingCacheEntries } from "./helpers.ts";
-import { FilesNotFoundError } from "npm:@actions/cache@4.0.3/lib/internal/shared/errors.d.ts";
 
 const token = core.getInput("token");
-const action = core.getInput("action");
+const action = Deno.args[0];
 const vcpkgArchivePath = path.join("/github/workspace", core.getInput("archive-path"));
 
 if (action == "restore") {
