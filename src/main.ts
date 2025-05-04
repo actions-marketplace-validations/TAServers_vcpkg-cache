@@ -41,6 +41,7 @@ if (action == "restore") {
 
           if (actionsCaches.has(cacheKey)) {
             core.info(`Skipping '${archivePath}' as already present in cache`);
+            continue;
           }
 
           core.info(`Saving '${archivePath}' to '${cacheKey}'`);
