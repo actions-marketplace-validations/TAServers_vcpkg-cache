@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.3.1 AS apt-downloader
+FROM ubuntu:noble AS apt-downloader
 RUN cd /tmp && \
     apt-get update && apt-get download \
         tar && \
