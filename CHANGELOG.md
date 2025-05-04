@@ -14,6 +14,12 @@ The valid change types are:
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [1.0.3] - [No PR](#)
+
+### Fixed
+
+- Removed now-unused `action` input from config
+
 ## [1.0.2] - [No PR](#)
 
 ### Added
